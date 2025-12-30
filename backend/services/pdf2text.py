@@ -1,17 +1,30 @@
-import os,re
+import os,re,json
 import fitz  # PyMuPDF
 import pytesseract
 from PIL import Image
-from models.small_models import model
+from models.api_models import GPT_OSS_20b_GROQ
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-base = os.path.abspath("./temp_data")
+def extract_array(contents):
+    matches = re.findall(r'\[.*?\]', contents, re.DOTALL)
+    
+    if not matches:
+        return None
+    
+    longest = max(matches, key=len)
+    
+    try:
+        result = json.loads(longest)
+        return result
+    except json.JSONDecodeError:
+        return None
 
 
-def questions_from_pdf(pdf_path):
+
+def questions_from_pdf(contents):
     questions = []
     pdf_text = ""
-    doc = fitz.open(pdf_path)
+    doc = fitz.open(stream=contents, filetype="pdf")
 
     for page in doc:
         text = page.get_text()
@@ -42,9 +55,6 @@ def questions_from_pdf(pdf_path):
 
             pix = None
     
-    response = model.invoke(f'Extract all questions from this OCR text as a JSON array of strings.  Include any code as part of the question text. Ignore headers, footers, and metadata. OCR Text: {pdf_text} Output only valid JSON array: ["question 1...", "question 2..."]')
-    print(response)
+    response = GPT_OSS_20b_GROQ.invoke(f'Extract all questions from this OCR text as a JSON array of strings.  Include any code as part of the question text. Ignore headers, footers, and metadata. OCR Text: {pdf_text} Output only valid JSON array: ["question 1...", "question 2..."]')
 
-
-pdf_path = os.path.join(base, "sample.pdf")
-questions_from_pdf(pdf_path)
+    return extract_array(response)
