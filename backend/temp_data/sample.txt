@@ -1,0 +1,202 @@
+CG Scanned with OKEN Scanner
+
+B.MS. COLLEGE OF ENGINEERING, BANGALORE-19
+
+prAne (Autonomous Institute, Affiliated to VTU)
+co} Computer Science & Engineering
+Ss INTERNALS-2 7
+| Course Code: 22CS3PCDST___, Course Titl _
+_ | Maximum Marks: 40 TDate: 21-01-2023
+
+| Semester: 3
+| Faculty Handling the Course: Dr. SKS, Prof. NM, Dr.JSN, Dr. BSR
+
+structions: Jnternal choice is provided in Part CG
+
+(in
+
+‘otal 5 Marks (No Choice
+
+:
+tiate between singly linked lists and circular linked list.
+
+Differen
+PART-B
+
+Total 15 Marks (No Choice,
+wing function that takes reference to the head of a Circular
+
+Consider the follo
+Linked List as parameter.
+
+truct node *head)
+
+void call_fun (s
+
+*preptr;
+
+{
+
+struct node *ptr,
+i f(head==NULL) ;
+{ printf ("Empty List");
+
+if (head ->next == head)
+
+{ head = NULL;
+free(head);
+
+}
+else
+
+tr = head;
+Prile(ptr ~ynext != head)
+
+preptr=ptr;
+ptr = ptr->next;
+
+-> next;
+
+}
+reptr->next = ptr
+free(ptr):
+
+sed to above
+
+3
+roular linked list is pas'
+
+he modified linked
+
+of head of following ci
+
+Assume that reference pe
+function 10 --> 20 --> 35 --? 15-2 49.70":
+Analyze the a ode and write a neat diagram to represent t
+
+list and its con! nction call.
+
+bove ¢
+tents after the ful
+
+sts the following ite
+
+as follows:
+
+ms as follows:
+
+The singly Linked List consi
+[5-> 32-> 63-7 20-> 45. _
+After the function is called the list 1s displayed
+
+15
+
+45-> 20-> 63-> 32-> 15.
+
+
+
+CG Scanned with OKEN Scanner
+
+at performs the above operation, —~—
+
+fliowing C function takes 2 Ely inked list agp
+ze the ‘i from the list and returns the item, Complete the . age
+¢ operation. lang A
+
+¢(-Function thi
+
+Write the
+
+Analy: “ie
+op the elem
+ae to perform the abov
+typedef struct node
+
+int value; .
+
+struct node ———
+node;
+
+int function (Node *head)
+___ *ptr;
+
+7f(head == NULL)
+
+printf("\nList is empty");
+
+else
+
+return ptr->value;
+
+Total 20 Marks (Choice between question 3a & 3b, choice
+between question 4a & 4b)
+Question
+Car company advertised customer to register their name and mobile
+for the new car test drive. It has noticed the duplicate entry of the custor
+
+w
+it)
+
+their final list. Write a solution (C function) to display the participant's:
+list without any duplicates using Singly Linked List.
+
+OR
+Laptop company maintains their customer details (name and email i!
+sending their latest laptop details. Implement a solution (c function:
+
+doubly linked list) to maintain the list in alphabetical order and to ptt
+Customer’s name,
+
+Implement a Personal song play list from YouTube. Create a list by 4
+Songs. Play the list,
+
+Once all the songs fr i hen statt ti
+from the beginning ngs trom the list are played t
+
+w
+>
+
+The students h = I
+ents have registered for a course j two portal
+tudent’s enrolment lit sé In a college through two port
+
+= Ea os
+me
+ao
+g 8
+aes
+2p
+a>
+os
+Ooo9g
+pas es
+Bo
+So ic]
+sa
+oe
+es
+&&
+a &
+@ we
+ao
+oa
+=
+a
+Dm
+fo
+4
+OQ
+Qa.
+5
+>
+Es)
+5.
+o
+ao
+=.
+QO
+B
+lo}
+a
+=
+=

@@ -1,0 +1,12 @@
+torch>=2.0.0
+transformers>=4.30.0
+PyMuPDF>=1.23.0
+pytesseract>=0.3.10
+Pillow>=10.0.0
+accelerate>=0.20.0
+sentencepiece>=0.1.99
+
+# Note: Tesseract-OCR must be installed separately on your system
+# Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
+# Linux: sudo apt-get install tesseract-ocr
+# macOS: brew install tesseract
