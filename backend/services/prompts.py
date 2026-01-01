@@ -1,5 +1,6 @@
 from models.api_models import GPT_OSS_20b_GROQ
 from services.textformat import extract_array
+import json
 
 def notes_from_text(pdf_text):
     prompt = f"""
@@ -60,23 +61,20 @@ def generate_topics(text):
     """
     topics = GPT_OSS_20b_GROQ.invoke(prompt)
 
-    return topics
+    return json.loads(topics)
 
 def results_dict_to_text(results_by_topic): 
     texts = []
 
-    for topic, matches in results_by_topic.items():
-        topic_block = f"Topic: {topic}\n"
-        topic_block += "Related content:\n"
-
-        for m in matches:
-            topic_block += f"- {m['text']}\n"
+    for topic in results_by_topic:
+        topic_block = f"Topic: {topic[0]} "
+        topic_block += f"Related content: {topic[1:]}"
 
         texts.append(topic_block.strip())
 
     return texts
 
-def output(text_to_model):
+def topic_to_notes(text_to_model):
     results = {}
     for topic , text in text_to_model.items():
         response = GPT_OSS_20b_GROQ.invoke(f""" 

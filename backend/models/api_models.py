@@ -6,8 +6,7 @@ from config import GROQ_API_KEY
 class ChatModel:
     def __init__(self, model_name: str = "openai/gpt-oss-20b", api_key: str = GROQ_API_KEY):
         self.model_name = model_name
-        self.client = Groq()
-        self.client.api_key = api_key
+        self.client = Groq(api_key=api_key)
 
     def invoke(self, prompt: str = "", messages: list = None, k_chunks: list = None):
         messages = messages or []

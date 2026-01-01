@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.pdf_routes import router as pdf_router
+from routes.db_routes import router as db_router
+from routes.notes_route import router as notes_router
 
 app = FastAPI()
 
@@ -15,7 +17,19 @@ app.add_middleware(
 app.include_router(
     pdf_router,
     prefix="/pdf",
-    tags=["Notes"]
+    tags=["pdf"]
+)
+
+app.include_router(
+    db_router,
+    prefix="/db",
+    tags=["db"]
+)
+
+app.include_router(
+    notes_router,
+    prefix="/notes",
+    tags=["notes"]
 )
 
 if __name__ == "__main__":
