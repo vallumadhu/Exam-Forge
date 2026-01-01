@@ -1,7 +1,7 @@
 {
   "name": "examforge",
   "version": "1.0.0",
-  "description": "An Electron application with React",
+  "description": "ExamForge - An Electron application with React",
   "main": "./out/main/index.js",
   "author": "example.com",
   "homepage": "https://electron-vite.org",
@@ -36,5 +36,62 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "vite": "^7.2.6"
+  },
+  "build": {
+    "appId": "com.examforge.app",
+    "productName": "ExamForge",
+    "directories": {
+      "output": "release"
+    },
+    "extraResources": [
+      {
+        "from": "../backend/dist",
+        "to": "backend",
+        "filter": [
+          "main.exe",
+          "main",
+          "_internal/**/*"
+        ]
+      }
+    ],
+    "files": [
+      "out/**/*",
+      "resources/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.education"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Education"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }

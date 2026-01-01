@@ -1,9 +1,24 @@
-import os,re,json
+import os,re,json,sys
 import fitz  # PyMuPDF
 import pytesseract
 from PIL import Image
 from models.api_models import GPT_OSS_20b_GROQ
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+def get_tesseract_path():
+
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    
+    tesseract_exe = os.path.join(base_path, 'tesseract', 'tesseract.exe')
+
+    if not os.path.exists(tesseract_exe):
+        raise FileNotFoundError(f"Tesseract not found at: {tesseract_exe}")
+    
+    return tesseract_exe
+
+pytesseract.pytesseract.tesseract_cmd = get_tesseract_path()
 
 def extract_array(contents):
     matches = re.findall(r'\[.*?\]', contents, re.DOTALL)
