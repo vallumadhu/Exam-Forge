@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from routes.pdf_routers import router as pdf_router
+from routes.pdf_routes import router as pdf_router
 
 app = FastAPI()
 
