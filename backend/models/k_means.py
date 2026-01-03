@@ -14,6 +14,11 @@ class K_means:
         self.embedded_questions = embeddings(questions)
 
     def get_clustors(self,start=3,end=10):
+        totoal_questions = len(self.questions)
+        if end>totoal_questions:
+            end = totoal_questions
+            if end<start:
+                start-=1
         
         intertia = []
         all_labels = []

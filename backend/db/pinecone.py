@@ -43,12 +43,12 @@ class PineconeDB:
     def query(self,query,top_k = 5):
         embedded_query = embeddings(query)
         response = self.index.query(
-            vector=embedded_query,
+            vector=embedded_query.tolist(),
             top_k=top_k,
             include_metadata=True
         )
 
-        return response
+        return [match['metadata'] for match in response['matches']]
 
 
     
